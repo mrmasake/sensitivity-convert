@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Precision Converter - Professional FPS Mouse Sensitivity Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <i class="fas fa-crosshairs"></i>
+                <span>Precision Converter</span>
+            </div>
+            <div class="nav-menu">
+                <a href="#converter" class="nav-link">Converter</a>
+                <a href="#pro-configs" class="nav-link">Pro Configs</a>
+                <a href="#about" class="nav-link">About</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主要内容区域 -->
+    <main class="main-content">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <h1 class="hero-title">Professional FPS Mouse Sensitivity Calculator</h1>
+                <p class="hero-subtitle">Providing the most accurate sensitivity conversion service considering FOV impact for consistent muscle memory across different games</p>
+                <a href="#converter" class="cta-button">Start Converting</a>
+            </div>
+        </section>
+
+        <!-- Converter Section -->
+        <section id="converter" class="converter-section">
+            <div class="container">
+                <h2 class="section-title">Sensitivity Converter</h2>
+                <div class="converter-container">
+                    <!-- 输入区域 -->
+                    <div class="input-panel">
+                        <div class="input-group">
+                            <label for="source-game">Source Game</label>
+                            <select id="source-game" class="form-select">
+                                <option value="">Select Source Game</option>
+                                <option value="cs2">Counter-Strike 2</option>
+                                <option value="valorant">Valorant</option>
+                                <option value="overwatch2">Overwatch 2</option>
+                                <option value="apex">Apex Legends</option>
+                                <option value="r6">Rainbow Six Siege</option>
+                                <option value="warzone">Call of Duty: Warzone</option>
+                                <option value="fortnite">Fortnite</option>
+                                <option value="delta">Delta Force</option>
+                            </select>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="source-sensitivity">Source Game Sensitivity</label>
+                            <input type="number" id="source-sensitivity" class="form-input" step="0.001" min="0.001" placeholder="e.g: 0.3 or 1.2">
+                        </div>
+
+                        <div class="input-group">
+                            <label for="dpi">DPI</label>
+                            <input type="number" id="dpi" class="form-input" placeholder="e.g: 800">
+                        </div>
+
+                        <div class="input-group" id="source-fov-group" style="display: none;">
+                            <label for="source-fov">Source Game FOV</label>
+                            <input type="number" id="source-fov" class="form-input" min="70" max="150" placeholder="e.g: 103">
+                            <div class="fov-hint" id="source-fov-hint"></div>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="target-game">Target Game</label>
+                            <select id="target-game" class="form-select">
+                                <option value="">Select Target Game</option>
+                                <option value="cs2">Counter-Strike 2</option>
+                                <option value="valorant">Valorant</option>
+                                <option value="overwatch2">Overwatch 2</option>
+                                <option value="apex">Apex Legends</option>
+                                <option value="r6">Rainbow Six Siege</option>
+                                <option value="warzone">Call of Duty: Warzone</option>
+                                <option value="fortnite">Fortnite</option>
+                                <option value="delta">Delta Force</option>
+                            </select>
+                        </div>
+
+                        <div class="input-group" id="target-fov-group" style="display: none;">
+                            <label for="target-fov">Target Game FOV</label>
+                            <input type="number" id="target-fov" class="form-input" min="70" max="150" placeholder="e.g: 103">
+                            <div class="fov-hint" id="target-fov-hint"></div>
+                        </div>
+
+                        <button id="calculate-btn" class="calculate-btn">
+                            <i class="fas fa-calculator"></i>
+                            Calculate Conversion
+                        </button>
+                    </div>
+
+                    <!-- Results Panel -->
+                    <div class="result-panel">
+                        <div class="result-display" id="result-display">
+                            <div class="result-placeholder">
+                                <i class="fas fa-crosshairs"></i>
+                                <p>Enter parameters and click calculate</p>
+                            </div>
+                        </div>
+
+                        <!-- Playstyle Recommendation -->
+                        <div class="playstyle-recommendation" id="playstyle-recommendation" style="display: none;">
+                            <h3>Recommended Playstyle</h3>
+                            <div class="playstyle-content"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pro Configurations Library -->
+        <section id="pro-configs" class="pro-configs-section">
+            <div class="container">
+                <h2 class="section-title">Professional Player Configurations</h2>
+                <div class="config-filters">
+                    <select id="game-filter" class="filter-select">
+                        <option value="">All Games</option>
+                        <option value="cs2">Counter-Strike 2</option>
+                        <option value="valorant">Valorant</option>
+                        <option value="overwatch2">Overwatch 2</option>
+                        <option value="apex">Apex Legends</option>
+                        <option value="r6">Rainbow Six Siege</option>
+                        <option value="warzone">Call of Duty: Warzone</option>
+                        <option value="fortnite">Fortnite</option>
+                        <option value="delta">Delta Force</option>
+                    </select>
+                </div>
+                <div class="configs-grid" id="configs-grid">
+                    <!-- Professional configurations will be loaded dynamically via JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="about-section">
+            <div class="container">
+                <h2 class="section-title">About Precision Converter</h2>
+                <div class="about-content">
+                    <div class="about-text">
+                        <h3>Why Choose Us?</h3>
+                        <ul>
+                            <li><strong>Precise Algorithm:</strong> Professional conversion formula based on eDPI and FOV correction</li>
+                            <li><strong>Authoritative Data:</strong> Real configuration data from professional players</li>
+                            <li><strong>Smart Recommendations:</strong> Personalized game style recommendations based on your configuration</li>
+                            <li><strong>Multi-Game Support:</strong> Support for all major FPS games including the latest titles</li>
+                        </ul>
+                    </div>
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <i class="fas fa-bullseye"></i>
+                            <h4>Precise Conversion</h4>
+                            <p>Professional algorithm considering FOV impact</p>
+                        </div>
+                        <div class="feature-card">
+                            <i class="fas fa-users"></i>
+                            <h4>Pro Configurations</h4>
+                            <p>Real configurations from top professional players</p>
+                        </div>
+                        <div class="feature-card">
+                            <i class="fas fa-gamepad"></i>
+                            <h4>Multi-Game Support</h4>
+                            <p>Support for all major FPS titles</p>
+                        </div>
+                        <div class="feature-card">
+                            <i class="fas fa-lightbulb"></i>
+                            <h4>Smart Recommendations</h4>
+                            <p>Personalized game style suggestions</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <i class="fas fa-crosshairs"></i>
+                    <span>Precision Converter</span>
+                </div>
+                <div class="footer-links">
+                    <a href="#converter">Converter</a>
+                    <a href="#pro-configs">Pro Configs</a>
+                    <a href="#about">About</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Precision Converter. Providing the most professional sensitivity conversion service for FPS players.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
